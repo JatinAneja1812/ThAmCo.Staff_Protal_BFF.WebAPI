@@ -5,6 +5,22 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThAmCo.Staff_Protal_BFF.WebAPI", "ThAmCo.Staff_Protal_BFF.WebAPI\ThAmCo.Staff_Protal_BFF.WebAPI.csproj", "{965CEA44-D0FA-46BC-A037-650A16EAE9C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.Services", "ThAmCo.Staff_Portal_BFF.Services", "{10270226-8896-4BCF-8083-4764B79963CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.Models", "ThAmCo.Staff_Portal_BFF.Models", "{B9CF860D-2DB7-491D-86A6-DF1B66D85B6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.DTOs", "ThAmCo.Staff_Portal_BFF.DTOs", "{A6D50745-538B-42B8-AC31-2C150B539362}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.WebAPI.Tests", "ThAmCo.Staff_Portal_BFF.WebAPI.Tests", "{6E6B2000-BE29-4689-9270-BB42AE14377D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Classes", "Service.Classes\Service.Classes.csproj", "{85F47BE8-9CD5-46D5-B94C-C848FF538126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Interfaces", "Service.Interfaces\Service.Interfaces.csproj", "{065F9D41-141E-43E0-A693-CFE6C78775B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{906FBA31-BF16-4518-A220-A15DAFD4B44D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +31,31 @@ Global
 		{965CEA44-D0FA-46BC-A037-650A16EAE9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{965CEA44-D0FA-46BC-A037-650A16EAE9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{965CEA44-D0FA-46BC-A037-650A16EAE9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85F47BE8-9CD5-46D5-B94C-C848FF538126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F47BE8-9CD5-46D5-B94C-C848FF538126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F47BE8-9CD5-46D5-B94C-C848FF538126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85F47BE8-9CD5-46D5-B94C-C848FF538126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065F9D41-141E-43E0-A693-CFE6C78775B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065F9D41-141E-43E0-A693-CFE6C78775B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065F9D41-141E-43E0-A693-CFE6C78775B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065F9D41-141E-43E0-A693-CFE6C78775B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76} = {B9CF860D-2DB7-491D-86A6-DF1B66D85B6A}
+		{85F47BE8-9CD5-46D5-B94C-C848FF538126} = {10270226-8896-4BCF-8083-4764B79963CF}
+		{065F9D41-141E-43E0-A693-CFE6C78775B0} = {10270226-8896-4BCF-8083-4764B79963CF}
+		{906FBA31-BF16-4518-A220-A15DAFD4B44D} = {A6D50745-538B-42B8-AC31-2C150B539362}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9C259EE-78C2-4CB6-B600-9CE53F078AFB}

@@ -1,25 +1,39 @@
-var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace ThAmCo.Staff_Protal_BFF.WebAPI
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            IHost host = CreateHostBuilder(args).Build();
+
+            host.Run();
+        }
+
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        var env = hostingContext.HostingEnvironment;
+                        config.SetBasePath(AppDomain.CurrentDomain.BaseDirectory);
+                    });
+
+                    webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging(logging =>
+                {
+                    // clear default logging providers
+                    logging.ClearProviders();
+
+                    // add built-in providers manually, as needed 
+                    logging.AddConsole();
+                    logging.AddDebug();
+                    logging.AddEventLog();
+                    logging.AddEventSourceLogger();
+
+                });
+    }
+
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
