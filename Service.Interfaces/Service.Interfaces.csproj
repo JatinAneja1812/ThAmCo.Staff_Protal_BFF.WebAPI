@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Customers\" />
+    <Folder Include="Orders\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DTOs\DTOs.csproj" />
+  </ItemGroup>
+
 </Project>

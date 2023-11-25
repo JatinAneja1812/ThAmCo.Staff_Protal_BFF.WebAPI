@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-
+using Service.Classes.Products;
+using Service.Classes.UserReviews;
+using Service.Interfaces.Products;
+using Service.Interfaces.UserReviews;
 namespace ThAmCo.Staff_Protal_BFF.WebAPI
 {
     public class Startup
@@ -40,7 +43,6 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
                 options.Audience = _configuration["Jwt:Audience"];
             });
 
-
             // Configure the database context
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -51,8 +53,8 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             services.AddControllers();
 
             // Add services
-            services.AddScoped<ICustomerReviewsFake, CustomerReviewsFake>();
-            services.AddScoped<IProductsFake, ProductsFake>();
+            services.AddScoped<ICustomerReviews, CustomerReviewsFake>();
+            services.AddScoped<IProductsService, ProductsServiceFake>();
 
             // Add API endpoint exploration and Swagger
             services.AddEndpointsApiExplorer();
@@ -71,7 +73,6 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
                 app.UseSwaggerUI();
             }
 
-
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseRouting();
@@ -87,4 +88,4 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
         }
     }
 }
-}
+
