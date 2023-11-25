@@ -8,12 +8,12 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : Controller
+    public class UserReviewsController : Controller
     {
         private readonly ICustomerReviews _reviews;
-        private readonly ILogger<CustomersController> _logger;
+        private readonly ILogger<UserReviewsController> _logger;
 
-        public CustomersController(ICustomerReviews Reviews, ILogger<CustomersController> logger)
+        public UserReviewsController(ICustomerReviews Reviews, ILogger<UserReviewsController> logger)
         {
             _reviews = Reviews;
             _logger = logger;
