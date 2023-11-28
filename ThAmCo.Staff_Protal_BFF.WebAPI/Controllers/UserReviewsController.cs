@@ -1,4 +1,4 @@
-﻿using DTOs;
+﻿using DTOs.UserReviews;
 using Enums;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

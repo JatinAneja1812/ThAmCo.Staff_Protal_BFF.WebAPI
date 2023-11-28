@@ -1,4 +1,4 @@
-﻿using DTOs;
+﻿using DTOs.UserReviews;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Service.Interfaces.UserReviews;

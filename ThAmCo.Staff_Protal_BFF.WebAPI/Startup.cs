@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Service.Classes.Company;
 using Service.Classes.Products;
 using Service.Classes.UserReviews;
+using Service.Classes.Users;
+using Service.Interfaces.Company;
+using Service.Interfaces.Customers;
 using Service.Interfaces.Products;
 using Service.Interfaces.UserReviews;
+
 namespace ThAmCo.Staff_Protal_BFF.WebAPI
 {
     public class Startup
@@ -55,10 +60,14 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             // Add services
             services.AddScoped<ICustomerReviews, CustomerReviewsFake>();
             services.AddScoped<IProductsService, ProductsServiceFake>();
+            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddHttpClient<UserService>();
+            services.AddTransient<IUserService, UserService>();
 
             // Add API endpoint exploration and Swagger
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +80,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();

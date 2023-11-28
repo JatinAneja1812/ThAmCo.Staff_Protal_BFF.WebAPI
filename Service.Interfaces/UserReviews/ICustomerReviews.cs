@@ -1,4 +1,4 @@
-﻿using DTOs;
+﻿using DTOs.UserReviews;
 
 namespace Service.Interfaces.UserReviews
 {

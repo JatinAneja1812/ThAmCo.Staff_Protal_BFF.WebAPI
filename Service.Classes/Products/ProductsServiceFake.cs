@@ -1,4 +1,4 @@
-﻿using DTOs;
+﻿using DTOs.Products;
 using Enums;
 using Microsoft.Extensions.Logging;
 using Service.Interfaces.Products;

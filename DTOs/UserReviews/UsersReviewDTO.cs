@@ -1,4 +1,4 @@
-﻿namespace DTOs
+﻿namespace DTOs.UserReviews
 {
     public class UsersReviewDto
     {
