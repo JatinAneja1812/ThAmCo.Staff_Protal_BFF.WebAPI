@@ -27,11 +27,38 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             try
             {
                 var token = Authorization.Split(" ")[1];
-                // Call GetAllCustomers using the obtained access token
+
                 var customers = await _usersProfiles.GetAllCustomers(token);
 
-                // Handle the customers data as needed
                 return Ok(customers);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    new EventId((int)LogEventIdEnum.UnknownError),
+                    $"Unexpected exception was caught in UsersController at GetAllCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+
+                return StatusCode(500, "Server error. An unknown error occurred on the server.");
+            }
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("RemoveCustomer")]
+        public async Task<ActionResult<List<UserProfilesDTO>>> RemoveCustomers([FromHeader] string Authorization, [FromHeader] string UserId)
+        {
+            try
+            {
+                var token = Authorization.Split(" ")[1];
+
+                var result = await _usersProfiles.RemoveCustomers(token, UserId);
+
+                if (result == false)
+                {
+                    return StatusCode(500, "Failed to remove customer from the database.");
+                }
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
