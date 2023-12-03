@@ -57,6 +57,42 @@ namespace Service.Classes.Users
             }
         }
 
+        public async Task<UserProfilesDTO> GetCurrentlyLoggedInStaff(string? accessToken, string email)
+        {
+            try
+            {
+                var client = _clientFactory.CreateClient();
+
+                var apiBaseAddress = _configuration["Services:UserProfiles:BaseAddress"];
+                client.BaseAddress = new Uri(apiBaseAddress);
+
+                // Setted the authorization header with the access token
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                // Constructed the full API endpoint for fetching all customers
+                var endpoint = _configuration["Services:UserProfiles:GetStaffDetailsEndpoint"];
+
+                // Send the GET request
+                client.DefaultRequestHeaders.Add("Email", email);
+                var response = await client.GetAsync(endpoint);
+
+                // Check if the request was successful
+                response.EnsureSuccessStatusCode();
+
+                // Read and parse the response content into a List<UserProfilesDTO>
+                var result = await response.Content.ReadFromJsonAsync<UserProfilesDTO>();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    new EventId((int)LogEventIdEnum.UnknownError),
+                    $"Unexpected exception was caught in UserService at GetCurrentlyLoggedInStaff().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                throw;
+            }
+
+        }
+
         public async Task<bool> RemoveCustomers(string? accessToken, string userId)
         {
             try

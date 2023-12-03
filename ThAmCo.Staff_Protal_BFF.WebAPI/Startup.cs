@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Service.Classes;
 using Service.Classes.Company;
 using Service.Classes.Products;
 using Service.Classes.UserReviews;
@@ -63,6 +64,8 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddHttpClient<UserService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddHttpClient<TokenService>();
+            services.AddTransient<ITokenService, TokenService>();
 
             // Add API endpoint exploration and Swagger
             services.AddEndpointsApiExplorer();
