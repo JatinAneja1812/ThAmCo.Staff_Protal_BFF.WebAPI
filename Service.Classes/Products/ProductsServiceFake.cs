@@ -8,11 +8,11 @@ namespace Service.Classes.Products
     public class ProductsServiceFake : IProductsService
     {
         public readonly ILogger<ProductsServiceFake> _logger;
-        private readonly List<ProductsAndCategoriesDTO> _allProductsAndCategories;
+        private readonly List<ProductsAndCategoriesDTO> _allProductsAndCategoriesFake;
         public ProductsServiceFake(ILogger<ProductsServiceFake> Logger)
         {
             _logger = Logger;
-            _allProductsAndCategories = new List<ProductsAndCategoriesDTO>
+            _allProductsAndCategoriesFake = new List<ProductsAndCategoriesDTO>
             {
                 new ProductsAndCategoriesDTO
                 {
@@ -891,7 +891,7 @@ namespace Service.Classes.Products
             try
             {
                 // Flatten the list to get all products
-                var allProducts = _allProductsAndCategories
+                var allProducts = _allProductsAndCategoriesFake
                     .SelectMany(category => category.Items)
                     .ToList();
 
@@ -914,7 +914,7 @@ namespace Service.Classes.Products
             try
             {
                 // Find the specified category
-                var selectedCategory = _allProductsAndCategories
+                var selectedCategory = _allProductsAndCategoriesFake
                     .FirstOrDefault(category => category.CategoryName.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
 
                 // Return products of the specified category if found

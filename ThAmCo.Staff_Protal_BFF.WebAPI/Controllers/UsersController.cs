@@ -30,7 +30,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         {
             try
             {
-                var token = await _tokenService.GetAccessTokenAsync();          //Authorization.Split(" ")[1];
+                var token = await _tokenService.GetUserProfilesAPIAccessTokenAsync();          //Authorization.Split(" ")[1];
 
                 var customers = await _usersProfiles.GetAllCustomers(token.access_token);
 
@@ -53,7 +53,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         {
             try
             {
-                var token = await _tokenService.GetAccessTokenAsync();          //Authorization.Split(" ")[1];
+                var token = await _tokenService.GetUserProfilesAPIAccessTokenAsync();          //Authorization.Split(" ")[1];
 
                 UserProfilesDTO staff = await _usersProfiles.GetCurrentlyLoggedInStaff(token.access_token, Email);
 
@@ -68,7 +68,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in UsersController at GetAllCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in UsersController at GetCurrentLoggedInStaff().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -81,7 +81,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         {
             try
             {
-                var token = await _tokenService.GetAccessTokenAsync();  //Authorization.Split(" ")[1];
+                var token = await _tokenService.GetUserProfilesAPIAccessTokenAsync();  //Authorization.Split(" ")[1];
 
                 bool result = await _usersProfiles.RemoveCustomers(token.access_token, UserId);
 
@@ -96,7 +96,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in UsersController at GetAllCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in UsersController at RemoveCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -109,7 +109,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         {
             try
             {
-                var token = await _tokenService.GetAccessTokenAsync();  //Authorization.Split(" ")[1];
+                var token = await _tokenService.GetUserProfilesAPIAccessTokenAsync();  //Authorization.Split(" ")[1];
 
                 var result = await _usersProfiles.UpdateCustomersFunds(token.access_token, customerFunds);
 
@@ -124,7 +124,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in UsersController at GetAllCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in UsersController at UpdateCustomerFunds().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }

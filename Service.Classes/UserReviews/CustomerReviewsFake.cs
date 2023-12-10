@@ -15,7 +15,7 @@ namespace Service.Classes.UserReviews
         {
             // Initialize HttpClient
             httpClient = new HttpClient();
-            Logger = _logger;
+            _logger = Logger;
         }
 
         private int GetRandomRating()

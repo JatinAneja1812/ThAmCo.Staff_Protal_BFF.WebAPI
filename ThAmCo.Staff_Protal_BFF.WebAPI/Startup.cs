@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Service.Classes;
 using Service.Classes.Company;
+using Service.Classes.Orders;
 using Service.Classes.Products;
 using Service.Classes.UserReviews;
 using Service.Classes.Users;
 using Service.Interfaces.Company;
 using Service.Interfaces.Customers;
+using Service.Interfaces.Orders;
 using Service.Interfaces.Products;
 using Service.Interfaces.UserReviews;
 
@@ -58,14 +60,21 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             // Add controllers
             services.AddControllers();
 
+
             // Add services
-            services.AddScoped<ICustomerReviews, CustomerReviewsFake>();
-            services.AddScoped<IProductsService, ProductsServiceFake>();
-            services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<ICustomerReviews, CustomerReviewsFake>();  // Uses Fake data service
+            services.AddScoped<IProductsService, ProductsServiceFake>();  // Uses Fake data service
+            services.AddScoped<ICompanyService, CompanyService>();        // Uses Fake data service
+            // UserProfiles
             services.AddHttpClient<UserService>();
             services.AddTransient<IUserService, UserService>();
+            //Orders
+            services.AddHttpClient<OrdersService>();
+            services.AddTransient<IOrdersService, OrdersService>();
+            //Token
             services.AddHttpClient<TokenService>();
             services.AddTransient<ITokenService, TokenService>();
+
 
             // Add API endpoint exploration and Swagger
             services.AddEndpointsApiExplorer();

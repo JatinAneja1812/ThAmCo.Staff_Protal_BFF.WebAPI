@@ -18,7 +18,7 @@ namespace Service.Classes.Company
                 ShopNumber = "433",
                 Street = "Corporate Avenue",
                 City = "MiddlesBrough",
-                State = "United Kingdoms",
+                Country = "United Kingdoms",
                 PostalCode = "TS12RU"
             };
         }
