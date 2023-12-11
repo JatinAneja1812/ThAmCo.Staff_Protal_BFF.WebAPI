@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThAmCo.Staff_Protal_BFF.WebAPI", "ThAmCo.Staff_Protal_BFF.WebAPI\ThAmCo.Staff_Protal_BFF.WebAPI.csproj", "{965CEA44-D0FA-46BC-A037-650A16EAE9C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThAmCo.Staff_Protal_BFF.WebAPI", "ThAmCo.Staff_Protal_BFF.WebAPI\ThAmCo.Staff_Protal_BFF.WebAPI.csproj", "{965CEA44-D0FA-46BC-A037-650A16EAE9C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.Services", "ThAmCo.Staff_Portal_BFF.Services", "{10270226-8896-4BCF-8083-4764B79963CF}"
 EndProject
@@ -13,13 +13,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.DTO
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.WebAPI.Tests", "ThAmCo.Staff_Portal_BFF.WebAPI.Tests", "{6E6B2000-BE29-4689-9270-BB42AE14377D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{9EEF3DD1-532E-4AB4-AE6D-43CCAF984C76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Classes", "Service.Classes\Service.Classes.csproj", "{85F47BE8-9CD5-46D5-B94C-C848FF538126}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Classes", "Service.Classes\Service.Classes.csproj", "{85F47BE8-9CD5-46D5-B94C-C848FF538126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Interfaces", "Service.Interfaces\Service.Interfaces.csproj", "{065F9D41-141E-43E0-A693-CFE6C78775B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Interfaces", "Service.Interfaces\Service.Interfaces.csproj", "{065F9D41-141E-43E0-A693-CFE6C78775B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{906FBA31-BF16-4518-A220-A15DAFD4B44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOs", "DTOs\DTOs.csproj", "{906FBA31-BF16-4518-A220-A15DAFD4B44D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.Enums", "ThAmCo.Staff_Portal_BFF.Enums", "{A80D5436-4B50-4C8D-9666-839F30FD86BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enums", "Enums\Enums.csproj", "{9D326A60-20E4-4852-9831-DB23ABFF2140}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThAmCo.Staff_Portal_BFF.Application", "ThAmCo.Staff_Portal_BFF.Application", "{EFE620EB-4774-4645-A30B-41D08D396490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BFFServiceFileLogger", "BFFServiceFileLogger\BFFServiceFileLogger.csproj", "{9BF8461A-4678-44AC-94F5-280E21EC1B42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +55,14 @@ Global
 		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{906FBA31-BF16-4518-A220-A15DAFD4B44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D326A60-20E4-4852-9831-DB23ABFF2140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D326A60-20E4-4852-9831-DB23ABFF2140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D326A60-20E4-4852-9831-DB23ABFF2140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D326A60-20E4-4852-9831-DB23ABFF2140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BF8461A-4678-44AC-94F5-280E21EC1B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BF8461A-4678-44AC-94F5-280E21EC1B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BF8461A-4678-44AC-94F5-280E21EC1B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BF8461A-4678-44AC-94F5-280E21EC1B42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +72,8 @@ Global
 		{85F47BE8-9CD5-46D5-B94C-C848FF538126} = {10270226-8896-4BCF-8083-4764B79963CF}
 		{065F9D41-141E-43E0-A693-CFE6C78775B0} = {10270226-8896-4BCF-8083-4764B79963CF}
 		{906FBA31-BF16-4518-A220-A15DAFD4B44D} = {A6D50745-538B-42B8-AC31-2C150B539362}
+		{9D326A60-20E4-4852-9831-DB23ABFF2140} = {A80D5436-4B50-4C8D-9666-839F30FD86BA}
+		{9BF8461A-4678-44AC-94F5-280E21EC1B42} = {EFE620EB-4774-4645-A30B-41D08D396490}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9C259EE-78C2-4CB6-B600-9CE53F078AFB}

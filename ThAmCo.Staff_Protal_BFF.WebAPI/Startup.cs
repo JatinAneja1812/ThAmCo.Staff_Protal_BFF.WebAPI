@@ -1,4 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Service.Classes;
+using Service.Classes.Company;
+using Service.Classes.Orders;
+using Service.Classes.Products;
+using Service.Classes.UserReviews;
+using Service.Classes.Users;
+using Service.Interfaces.Company;
+using Service.Interfaces.Customers;
+using Service.Interfaces.Orders;
+using Service.Interfaces.Products;
+using Service.Interfaces.UserReviews;
 
 namespace ThAmCo.Staff_Protal_BFF.WebAPI
 {
@@ -40,7 +51,6 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
                 options.Audience = _configuration["Jwt:Audience"];
             });
 
-
             // Configure the database context
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -50,13 +60,26 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             // Add controllers
             services.AddControllers();
 
+
             // Add services
-            services.AddScoped<ICustomerReviewsFake, CustomerReviewsFake>();
-            services.AddScoped<IProductsFake, ProductsFake>();
+            services.AddScoped<ICustomerReviews, CustomerReviewsFake>();  // Uses Fake data service
+            services.AddScoped<IProductsService, ProductsServiceFake>();  // Uses Fake data service
+            services.AddScoped<ICompanyService, CompanyService>();        // Uses Fake data service
+            // UserProfiles
+            services.AddHttpClient<UserService>();
+            services.AddTransient<IUserService, UserService>();
+            //Orders
+            services.AddHttpClient<OrdersService>();
+            services.AddTransient<IOrdersService, OrdersService>();
+            //Token
+            services.AddHttpClient<TokenService>();
+            services.AddTransient<ITokenService, TokenService>();
+
 
             // Add API endpoint exploration and Swagger
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,8 +92,8 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                app.UseHsts();
             }
-
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
@@ -87,4 +110,4 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
         }
     }
 }
-}
+
