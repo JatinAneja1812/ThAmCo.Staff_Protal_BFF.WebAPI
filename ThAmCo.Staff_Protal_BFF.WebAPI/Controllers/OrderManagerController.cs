@@ -46,7 +46,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in OrderManagerController at AddNewOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in OrderManagerController at AddNewOrderByStaff().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -70,7 +70,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in OrderManagerController at AddNewOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in OrderManagerController at GetAllOrders().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -94,7 +94,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in OrderManagerController at AddNewOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in OrderManagerController at GetAllHistoricOrders().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -118,7 +118,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in OrderManagerController at AddNewOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in OrderManagerController at GetOrdersCount().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }
@@ -142,7 +142,55 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in OrderManagerController at AddNewOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                    $"Unexpected exception was caught in OrderManagerController at RemoveExistingorder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+
+                return StatusCode(500, "Server error. An unknown error occurred on the server.");
+            }
+        }
+
+        [Authorize]
+        [HttpPatch]
+        [Route("UpdateOrderStatus")]
+        public async Task<ActionResult<bool>> UpdateOrderStatus([FromHeader] OrderStatusDTO order)
+        {
+            try
+            {
+                var orderAPItoken = await _tokenService.GetOrdersAPIAccessTokenAsync();  //Authorization.Split(" ")[1];
+
+                var result = await _orders.UpdateOrderStatus(orderAPItoken.access_token, order);
+
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    new EventId((int)LogEventIdEnum.UnknownError),
+                    $"Unexpected exception was caught in OrderManagerController at UpdateOrderStatus().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+
+                return StatusCode(500, "Server error. An unknown error occurred on the server.");
+            }
+        }
+
+        [Authorize]
+        [HttpPatch]
+        [Route("UpdateOrderDeliveryDate")]
+        public async Task<ActionResult<bool>> UpdateOrderDeliveryDate([FromHeader] ScheduledOrderDTO order)
+        {
+            try
+            {
+                var orderAPItoken = await _tokenService.GetOrdersAPIAccessTokenAsync();  //Authorization.Split(" ")[1];
+
+                var result = await _orders.UpdateOrderDeliveryDate(orderAPItoken.access_token, order);
+
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    new EventId((int)LogEventIdEnum.UnknownError),
+                    $"Unexpected exception was caught in OrderManagerController at UpdateOrderDeliveryDate().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
 
                 return StatusCode(500, "Server error. An unknown error occurred on the server.");
             }

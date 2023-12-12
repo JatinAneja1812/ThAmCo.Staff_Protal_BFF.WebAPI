@@ -66,7 +66,7 @@ namespace Service.Classes.Orders
                         Amount = changedFunds
                     };
 
-                    _userService.UpdateCustomersFunds(usersAccessToken, updatedFunds);
+                    _userService.DirectAlterCustomersFunds(usersAccessToken, updatedFunds);
 
                     return true;
                 }
@@ -220,6 +220,88 @@ namespace Service.Classes.Orders
                 _logger.LogError(
                     new EventId((int)LogEventIdEnum.UnknownError),
                     $"Unexpected exception was caught in Orders Service at RemoveOrder().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                throw;
+            }
+
+
+        }
+
+        public async Task<bool> UpdateOrderStatus(string? accessToken, OrderStatusDTO order)
+        {
+            try
+            {
+                var client = _clientFactory.CreateClient();
+
+                var apiBaseAddress = _configuration["Services:Order:BaseAddress"];
+                client.BaseAddress = new Uri(apiBaseAddress);
+
+                // Setted the authorization header with the access token
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                // Constructed the full API endpoint for removing a user
+                var endpoint = $"{_configuration["Services:Order:UpdateOrderStatusEndpoint"]}";
+
+                // Serialized the customerFunds object to JSON
+                var jsonContent = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+
+                // Send a PATCH request with the serialized JSON in the request body
+                var response = await client.PatchAsync(endpoint, jsonContent);
+
+                // Check if the request was successful
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                     new EventId((int)LogEventIdEnum.UnknownError),
+                     $"Unexpected exception was caught in Orders Service at UpdateOrderStatus().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateOrderDeliveryDate(string? accessToken, ScheduledOrderDTO order)
+        {
+            try
+            {
+                var client = _clientFactory.CreateClient();
+
+                var apiBaseAddress = _configuration["Services:Order:BaseAddress"];
+                client.BaseAddress = new Uri(apiBaseAddress);
+
+                // Setted the authorization header with the access token
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                // Constructed the full API endpoint for removing a user
+                var endpoint = $"{_configuration["Services:Order:UpdateOrderDeliveryDateEndpoint"]}";
+
+                // Serialized the customerFunds object to JSON
+                var jsonContent = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+
+                // Send a PATCH request with the serialized JSON in the request body
+                var response = await client.PatchAsync(endpoint, jsonContent);
+
+                // Check if the request was successful
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                     new EventId((int)LogEventIdEnum.UnknownError),
+                     $"Unexpected exception was caught in Orders Service at UpdateOrderDeliveryDate().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
                 throw;
             }
         }
