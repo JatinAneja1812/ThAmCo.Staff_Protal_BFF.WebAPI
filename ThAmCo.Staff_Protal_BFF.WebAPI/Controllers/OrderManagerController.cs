@@ -109,7 +109,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
             {
                 var orderAPItoken = await _tokenService.GetOrdersAPIAccessTokenAsync();  //Authorization.Split(" ")[1];
 
-                var result = await _orders.GetAllOrders(orderAPItoken.access_token);
+                var result = await _orders.GetOrdersCount(orderAPItoken.access_token);
 
                 return Ok(result);
 
@@ -151,7 +151,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         [Authorize]
         [HttpPatch]
         [Route("UpdateOrderStatus")]
-        public async Task<ActionResult<bool>> UpdateOrderStatus([FromHeader] OrderStatusDTO order)
+        public async Task<ActionResult<bool>> UpdateOrderStatus([FromBody] OrderStatusDTO order)
         {
             try
             {
@@ -175,7 +175,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
         [Authorize]
         [HttpPatch]
         [Route("UpdateOrderDeliveryDate")]
-        public async Task<ActionResult<bool>> UpdateOrderDeliveryDate([FromHeader] ScheduledOrderDTO order)
+        public async Task<ActionResult<bool>> UpdateOrderDeliveryDate([FromBody] ScheduledOrderDTO order)
         {
             try
             {
