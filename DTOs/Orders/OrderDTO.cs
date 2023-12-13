@@ -6,6 +6,7 @@ namespace DTOs.Orders
     {
         public string OrderId { get; set; }
         public DateTime OrderCreationDate { get; set; }
+        public DateTime DeliveryDate { get; set; }
         public string CreatedBy { get; set; }
         public string PaymentMethod { get; set; }
         public double TotalPrice { get; set; }
