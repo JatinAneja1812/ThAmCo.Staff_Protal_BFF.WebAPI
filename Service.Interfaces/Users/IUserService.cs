@@ -1,7 +1,7 @@
 ﻿using DTOs.Customers;
 using DTOs.UserProfiles;
 
-namespace Service.Interfaces.Customers
+namespace Service.Interfaces.Users
 {
     public interface IUserService
     {

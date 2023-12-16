@@ -1,13 +1,12 @@
 ﻿using DTOs.Customers;
 using DTOs.Orders;
-using DTOs.UserProfiles;
 using Enums;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Service.Interfaces.Company;
-using Service.Interfaces.Customers;
 using Service.Interfaces.Orders;
+using Service.Interfaces.Users;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
@@ -22,7 +21,7 @@ namespace Service.Classes.Orders
         private readonly IUserService _userService;
         private readonly ICompanyService _companyService;
 
-        public OrdersService(IHttpClientFactory clientFactory, ILogger<OrdersService> Logger, IConfiguration Configuration, 
+        public OrdersService(IHttpClientFactory clientFactory, ILogger<OrdersService> Logger, IConfiguration Configuration,
             IUserService UserService, ICompanyService CompanyService)
         {
             _clientFactory = clientFactory;
@@ -34,7 +33,7 @@ namespace Service.Classes.Orders
 
         public async Task<bool> AddNewOrder(string? orderAccessToken, string? usersAccessToken, AddNewOrderDTO addNewOrderDTO)
         {
-           
+
             try
             {
                 addNewOrderDTO.BillingAddress = _companyService.GetCompanyDetails();
