@@ -2,14 +2,12 @@
 using Service.Classes;
 using Service.Classes.Company;
 using Service.Classes.Orders;
-using Service.Classes.Products;
 using Service.Classes.UserReviews;
 using Service.Classes.Users;
 using Service.Interfaces.Company;
-using Service.Interfaces.Customers;
 using Service.Interfaces.Orders;
-using Service.Interfaces.Products;
 using Service.Interfaces.UserReviews;
+using Service.Interfaces.Users;
 
 namespace ThAmCo.Staff_Protal_BFF.WebAPI
 {
@@ -63,7 +61,6 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI
 
             // Add services
             services.AddScoped<ICustomerReviews, CustomerReviewsFake>();  // Uses Fake data service
-            services.AddScoped<IProductsService, ProductsServiceFake>();  // Uses Fake data service
             services.AddScoped<ICompanyService, CompanyService>();        // Uses Fake data service
             // UserProfiles
             services.AddHttpClient<UserService>();

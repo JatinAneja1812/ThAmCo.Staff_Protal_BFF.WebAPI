@@ -4,7 +4,7 @@ using Enums;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Service.Interfaces.Customers;
+using Service.Interfaces.Users;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
@@ -115,7 +115,7 @@ namespace Service.Classes.Users
                 // Check if the request was successful
                 if (response.IsSuccessStatusCode)
                 {
-                        return true;
+                    return true;
                 }
                 else
                 {

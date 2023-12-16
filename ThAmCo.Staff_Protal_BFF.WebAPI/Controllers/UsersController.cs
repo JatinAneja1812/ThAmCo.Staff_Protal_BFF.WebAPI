@@ -4,7 +4,7 @@ using Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Classes;
-using Service.Interfaces.Customers;
+using Service.Interfaces.Users;
 
 namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
 {
@@ -14,9 +14,9 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
     {
         private readonly IUserService _usersProfiles;
         private readonly ILogger<UsersController> _logger;
-        private readonly ITokenService _tokenService; 
+        private readonly ITokenService _tokenService;
 
-        public UsersController(IUserService UsersProfiles,ITokenService tokenService, ILogger<UsersController> logger)
+        public UsersController(IUserService UsersProfiles, ITokenService tokenService, ILogger<UsersController> logger)
         {
             _usersProfiles = UsersProfiles;
             _tokenService = tokenService;
@@ -57,7 +57,7 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
 
                 UserProfilesDTO staff = await _usersProfiles.GetCurrentlyLoggedInStaff(token.access_token, Email);
 
-                if(staff == null)
+                if (staff == null)
                 {
                     return StatusCode(500, "Failed to return staff details. Try to login again.");
                 }
