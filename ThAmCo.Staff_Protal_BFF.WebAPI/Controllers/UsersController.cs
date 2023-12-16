@@ -48,29 +48,6 @@ namespace ThAmCo.Staff_Protal_BFF.WebAPI.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("GetMessages")]
-        public async Task<ActionResult<string>> GetMessage()
-        {
-            try
-            {
-                //var token = await _tokenService.GetUserProfilesAPIAccessTokenAsync();          //Authorization.Split(" ")[1];
-
-                //var customers = await _usersProfiles.GetAllCustomers(token.access_token);
-                var msg = "Hello There.";
-                return Ok(msg);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(
-                    new EventId((int)LogEventIdEnum.UnknownError),
-                    $"Unexpected exception was caught in UsersController at GetAllCustomers().\nException:\n{ex.Message}\nInner exception:\n{ex.InnerException}\nStack trace:\n{ex.StackTrace}");
-
-                return StatusCode(500, "Server error. An unknown error occurred on the server.");
-            }
-        }
-
-        [Authorize]
-        [HttpGet]
         [Route("GetStaffUser")]
         public async Task<ActionResult<UserProfilesDTO>> GetCurrentLoggedInStaff([FromHeader] string Email)
         {
