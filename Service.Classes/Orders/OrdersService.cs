@@ -58,14 +58,19 @@ namespace Service.Classes.Orders
                 // Check if the request was successful
                 if (response.IsSuccessStatusCode)
                 {
-                    //var changedFunds = Math.Round(addNewOrderDTO.Customer.AvailableFunds - (double.TryParse(addNewOrderDTO.Total, out double total) ? total : 0.0), 2);
-                    //CustomerFundsDTO updatedFunds = new CustomerFundsDTO
-                    //{
-                    //    UserId = addNewOrderDTO.CustomerId,
-                    //    Amount = changedFunds
-                    //};
+                    var changedFunds = Math.Round(addNewOrderDTO.Customer.AvailableFunds - (double.TryParse(addNewOrderDTO.Total, out double total) ? total : 0.0), 2);
+                    CustomerFundsDTO updatedFunds = new CustomerFundsDTO
+                    {
+                        UserId = addNewOrderDTO.CustomerId,
+                        Amount = changedFunds
+                    };
 
-                    //_userService.DirectAlterCustomersFunds(usersAccessToken, updatedFunds);
+                    bool isFundUpdated = await _userService.DirectAlterCustomersFunds(usersAccessToken, updatedFunds);
+
+                    if (!isFundUpdated)
+                    {
+                        return false;
+                    }
 
                     return true;
                 }
